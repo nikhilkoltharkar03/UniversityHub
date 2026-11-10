@@ -1,0 +1,296 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css');
+
+:root {
+  --spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --primary: #38BDF8;
+  --bg-primary: #07080C;
+  --text-primary: #F3F4F6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #07080C !important;
+  color: #F3F4F6 !important;
+  letter-spacing: -0.011em;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* 21st.dev Ambient Aurora Mesh & Architectural Perspective Grid */
+.ambient-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: #07080C;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -15%, rgba(56, 189, 248, 0.16), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 15% 25%, rgba(99, 102, 241, 0.11), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 30%, rgba(16, 185, 129, 0.09), transparent 60%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 44px 44px, 44px 44px;
+}
+
+@keyframes auroraFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(25px, -18px, 0) scale(1.06); }
+}
+
+.aurora-orb-1 {
+  position: absolute;
+  top: -120px;
+  left: 18%;
+  width: 520px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, transparent 70%);
+  filter: blur(55px);
+  animation: auroraFloat 10s ease-in-out infinite;
+}
+
+.aurora-orb-2 {
+  position: absolute;
+  top: 40px;
+  right: 15%;
+  width: 460px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.13) 0%, transparent 70%);
+  filter: blur(60px);
+  animation: auroraFloat 13s ease-in-out infinite reverse;
+}
+
+.main-content {
+  flex: 1;
+  position: relative;
+  z-index: 10;
+  padding-top: 12px;
+}
+
+/* 21st.dev Tubelight Active Nav Pill */
+.uh-nav-tab {
+  position: relative;
+  text-decoration: none !important;
+  transition: all 0.2s var(--spring);
+}
+
+.uh-nav-tab-active {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+.uh-nav-tab-active::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 3px;
+  border-radius: 999px;
+  background: #38BDF8;
+  box-shadow: 0 2px 12px 2px rgba(56, 189, 248, 0.85);
+}
+
+/* 21st.dev Interactive Spotlight + Specular Glass Card */
+.uh-bento-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(24, 28, 42, 0.88) 0%, rgba(14, 17, 26, 0.94) 100%);
+  backdrop-filter: blur(16px);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 14px 34px -12px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  transition: transform 0.32s var(--spring), border-color 0.25s ease, box-shadow 0.32s var(--spring);
+  overflow: hidden;
+}
+
+.uh-bento-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    500px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+    rgba(56, 189, 248, 0.12),
+    transparent 40%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 1;
+}
+
+.uh-bento-card:hover::before {
+  opacity: 1;
+}
+
+.uh-bento-card:hover {
+  border-color: rgba(56, 189, 248, 0.38);
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.85), 0 0 28px -6px rgba(56, 189, 248, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+}
+
+.uh-lift-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Uiverse.io Luminous Primary Button */
+.uh-btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #E2E8F0 100%);
+  color: #07080C !important;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  text-decoration: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 20px -2px rgba(56, 189, 248, 0.35), inset 0 1px 0 rgba(255, 255, 255, 1);
+  transition: transform 0.2s var(--spring), box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.uh-btn-primary:hover {
+  transform: translateY(-1px);
+  color: #07080C !important;
+  box-shadow: 0 8px 28px -2px rgba(56, 189, 248, 0.55), inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.uh-btn-primary:active {
+  transform: scale(0.96);
+}
+
+.uh-btn-primary .arrow-icon {
+  transition: transform 0.22s var(--spring);
+}
+
+.uh-btn-primary:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* Uiverse.io Tactile Secondary Glass Button */
+.uh-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #F1F5F9 !important;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-decoration: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.2s var(--spring);
+  cursor: pointer;
+}
+
+.uh-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+  color: #FFFFFF !important;
+}
+
+.uh-btn-secondary:active {
+  transform: scale(0.96);
+}
+
+/* Uiverse.io Sliding Pill Switch */
+.uh-uiverse-toggle {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+}
+
+.uh-uiverse-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.uh-uiverse-track {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #10121A;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  transition: 0.28s var(--spring);
+}
+
+.uh-uiverse-track:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #94A3B8;
+  border-radius: 50%;
+  transition: 0.28s var(--spring);
+}
+
+.uh-uiverse-toggle input:checked + .uh-uiverse-track {
+  background-color: rgba(56, 189, 248, 0.2);
+  border-color: #38BDF8;
+}
+
+.uh-uiverse-toggle input:checked + .uh-uiverse-track:before {
+  transform: translateX(18px);
+  background-color: #38BDF8;
+  box-shadow: 0 0 10px #38BDF8;
+}
+
+/* Animated SVG Data Flow inside Card Blueprint Headers */
+@keyframes dashFlow {
+  to { stroke-dashoffset: -20; }
+}
+
+.uh-flow-line {
+  stroke-dasharray: 5 5;
+  animation: dashFlow 1.2s linear infinite;
+}
+
+/* Uiverse Interactive Dropzone */
+.uh-uiverse-dropzone {
+  border: 1.5px dashed rgba(56, 189, 248, 0.3);
+  background: rgba(16, 18, 26, 0.65);
+  transition: all 0.25s var(--spring);
+}
+
+.uh-uiverse-dropzone:hover {
+  border-color: #38BDF8;
+  background: rgba(56, 189, 248, 0.07);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #07080C; }
+::-webkit-scrollbar-thumb { background: #1E2231; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #38BDF8; }
