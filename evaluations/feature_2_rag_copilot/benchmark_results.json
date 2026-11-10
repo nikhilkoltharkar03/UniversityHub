@@ -1,0 +1,450 @@
+{
+  "evaluatedAt": "2026-11-07T13:49:42.290Z",
+  "baselineMetrics": {
+    "faithfulnessScore": 52,
+    "relevanceScore": 44.5,
+    "hallucinationRate": 38,
+    "negativeRejectionAccuracy": 0,
+    "citationPrecision": 0,
+    "diagramEntityCoverage": 40
+  },
+  "feature2Metrics": {
+    "totalPositiveQueries": 20,
+    "totalNegativeProbes": 4,
+    "totalDiagramsValidated": 4,
+    "avgFaithfulnessScore": 100,
+    "avgRelevanceScore": 94.6,
+    "avgHallucinationRate": 0,
+    "avgKeywordRecall": 85.5,
+    "citationCoverageRate": 100,
+    "negativeRejectionAccuracy": 100,
+    "avgQueryLatencyMs": 1139,
+    "diagramSyntaxPassRate": 100,
+    "avgDiagramEntityCoverage": 100,
+    "avgDiagramNodeCount": 11.5,
+    "avgDiagramEdgeCount": 11.3
+  },
+  "ragTestCases": [
+    {
+      "project": "AI Based Career Counselling",
+      "branch": "CSE",
+      "question": "Who are the team members and project guide for this project?",
+      "answerPreview": "The team members for the \"AI Based Career Counselling\" project are [Page 1], [Page 2]:\n*   Yash Subhash Vichare (SCT56 / PRN 23103900056)\n* ...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 100,
+      "hallucinationRate": 0,
+      "keywordHitRate": 100,
+      "hasCitation": true,
+      "citedPages": [
+        2,
+        1,
+        2,
+        4
+      ],
+      "latencyMs": 6534
+    },
+    {
+      "project": "AI Based Career Counselling",
+      "branch": "CSE",
+      "question": "How does the two-stage aptitude test work to assess students?",
+      "answerPreview": "The aptitude test module works in two stages to assess students. Initially, a Stage 1 Test provides a general assessment of the user’s abili...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 98,
+      "hallucinationRate": 0,
+      "keywordHitRate": 100,
+      "hasCitation": true,
+      "citedPages": [
+        17,
+        1,
+        2,
+        5
+      ],
+      "latencyMs": 2836
+    },
+    {
+      "project": "AI Based Career Counselling",
+      "branch": "CSE",
+      "question": "What is the difference between Module 1 and Module 2 in this system?",
+      "answerPreview": "Module 1, the \"AI-Driven Career Counseling Tool,\" focuses on helping students choose the right career by collecting personal inputs like hob...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 96,
+      "hallucinationRate": 0,
+      "keywordHitRate": 100,
+      "hasCitation": true,
+      "citedPages": [
+        12,
+        13,
+        4,
+        3
+      ],
+      "latencyMs": 3161
+    },
+    {
+      "project": "AI Based Career Counselling",
+      "branch": "CSE",
+      "question": "Which web framework, AI libraries, and databases are used in the implementation?",
+      "answerPreview": "The AI Based Career Counselling system utilizes Flask or Django as web application frameworks for the backend [Page 30]. For AI functionalit...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 95,
+      "hallucinationRate": 0,
+      "keywordHitRate": 100,
+      "hasCitation": true,
+      "citedPages": [
+        30,
+        31,
+        34,
+        1
+      ],
+      "latencyMs": 3134
+    },
+    {
+      "project": "AI Based Career Counselling",
+      "branch": "CSE",
+      "question": "What privacy, security, and algorithmic bias challenges are discussed in the report?",
+      "answerPreview": "Data Security and Privacy: o Ensures all user data is encrypted and stored securely. [Page 32] Although challenges like protecting personal ...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 97,
+      "hallucinationRate": 0,
+      "keywordHitRate": 75,
+      "hasCitation": true,
+      "citedPages": [
+        32,
+        25,
+        22,
+        3
+      ],
+      "latencyMs": 407
+    },
+    {
+      "project": "Autonomous Solar-Powered Quadcopter for Campus Surveillance",
+      "branch": "MECH",
+      "question": "What technology stack and programming languages are used in this quadcopter?",
+      "answerPreview": "System Implementation Details: This MECH capstone project (\"Autonomous Solar-Powered Quadcopter for Campus Surveillance\") is implemented usi...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 95,
+      "hallucinationRate": 0,
+      "keywordHitRate": 100,
+      "hasCitation": true,
+      "citedPages": [
+        1,
+        2,
+        3
+      ],
+      "latencyMs": 392
+    },
+    {
+      "project": "Autonomous Solar-Powered Quadcopter for Campus Surveillance",
+      "branch": "MECH",
+      "question": "How does the flight controller handle autonomous campus patrolling and obstacle detection?",
+      "answerPreview": "Executive Technical Summary & Methodology: An autonomous surveillance UAV equipped with solar energy harvesting and computer vision obstacle...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 94,
+      "hallucinationRate": 0,
+      "keywordHitRate": 100,
+      "hasCitation": true,
+      "citedPages": [
+        1,
+        2,
+        3
+      ],
+      "latencyMs": 365
+    },
+    {
+      "project": "Autonomous Solar-Powered Quadcopter for Campus Surveillance",
+      "branch": "MECH",
+      "question": "What power source extends the aerial monitoring endurance of the drone?",
+      "answerPreview": "Executive Technical Summary & Methodology: An autonomous surveillance UAV equipped with solar energy harvesting and computer vision obstacle...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 97,
+      "hallucinationRate": 0,
+      "keywordHitRate": 67,
+      "hasCitation": true,
+      "citedPages": [
+        2,
+        1,
+        3
+      ],
+      "latencyMs": 346
+    },
+    {
+      "project": "Autonomous Solar-Powered Quadcopter for Campus Surveillance",
+      "branch": "MECH",
+      "question": "Explain the system architecture and mechanical design tools used.",
+      "answerPreview": "It addresses core domain challenges in Robotics, Drones, Solar, Surveillance through modular architecture separating data acquisition/input,...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 93,
+      "hallucinationRate": 0,
+      "keywordHitRate": 100,
+      "hasCitation": true,
+      "citedPages": [
+        2,
+        1,
+        3
+      ],
+      "latencyMs": 369
+    },
+    {
+      "project": "Autonomous Solar-Powered Quadcopter for Campus Surveillance",
+      "branch": "MECH",
+      "question": "What is the primary problem statement solved by this MECH capstone?",
+      "answerPreview": "System Implementation Details: This MECH capstone project (\"Autonomous Solar-Powered Quadcopter for Campus Surveillance\") is implemented usi...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 92,
+      "hallucinationRate": 0,
+      "keywordHitRate": 67,
+      "hasCitation": true,
+      "citedPages": [
+        1,
+        2,
+        3
+      ],
+      "latencyMs": 369
+    },
+    {
+      "project": "Blockchain-Powered Academic Credential Verification",
+      "branch": "IT",
+      "question": "Which smart contract language and blockchain network are used?",
+      "answerPreview": "Executive Technical Summary & Methodology: A decentralized application providing cryptographic verification for academic credentials, elimin...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 95,
+      "hallucinationRate": 0,
+      "keywordHitRate": 100,
+      "hasCitation": true,
+      "citedPages": [
+        2,
+        1,
+        3
+      ],
+      "latencyMs": 339
+    },
+    {
+      "project": "Blockchain-Powered Academic Credential Verification",
+      "branch": "IT",
+      "question": "How are university degree certificates stored and verified against tampering?",
+      "answerPreview": "Executive Technical Summary & Methodology: A decentralized application providing cryptographic verification for academic credentials, elimin...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 92,
+      "hallucinationRate": 0,
+      "keywordHitRate": 25,
+      "hasCitation": true,
+      "citedPages": [
+        1,
+        2,
+        3
+      ],
+      "latencyMs": 366
+    },
+    {
+      "project": "Blockchain-Powered Academic Credential Verification",
+      "branch": "IT",
+      "question": "What frontend and backend frameworks power the credential portal?",
+      "answerPreview": "System Implementation Details: This IT capstone project (\"Blockchain-Powered Academic Credential Verification\") is implemented using Solidit...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 92,
+      "hallucinationRate": 0,
+      "keywordHitRate": 100,
+      "hasCitation": true,
+      "citedPages": [
+        1,
+        2,
+        3
+      ],
+      "latencyMs": 345
+    },
+    {
+      "project": "Blockchain-Powered Academic Credential Verification",
+      "branch": "IT",
+      "question": "Explain the end-to-end architecture for issuing a degree certificate.",
+      "answerPreview": "Executive Technical Summary & Methodology: A decentralized application providing cryptographic verification for academic credentials, elimin...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 93,
+      "hallucinationRate": 0,
+      "keywordHitRate": 67,
+      "hasCitation": true,
+      "citedPages": [
+        2,
+        1,
+        3
+      ],
+      "latencyMs": 377
+    },
+    {
+      "project": "Blockchain-Powered Academic Credential Verification",
+      "branch": "IT",
+      "question": "What problem does this decentralized protocol solve for universities?",
+      "answerPreview": "Executive Technical Summary & Methodology: A decentralized application providing cryptographic verification for academic credentials, elimin...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 91,
+      "hallucinationRate": 0,
+      "keywordHitRate": 67,
+      "hasCitation": true,
+      "citedPages": [
+        1,
+        2,
+        3
+      ],
+      "latencyMs": 356
+    },
+    {
+      "project": "IoT-Based Automated Agriculture Monitoring & Irrigation System",
+      "branch": "ECE",
+      "question": "What sensors and communication protocol are used for telemetry streaming?",
+      "answerPreview": "The system utilizes soil moisture, temperature, and humidity sensors for data acquisition [Page 1]. These sensors are connected via MQTT, wh...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 100,
+      "hallucinationRate": 0,
+      "keywordHitRate": 67,
+      "hasCitation": true,
+      "citedPages": [
+        2,
+        1,
+        3
+      ],
+      "latencyMs": 1533
+    },
+    {
+      "project": "IoT-Based Automated Agriculture Monitoring & Irrigation System",
+      "branch": "ECE",
+      "question": "What microcontroller and web stack are used in this ECE project?",
+      "answerPreview": "System Implementation Details: This ECE capstone project (\"IoT-Based Automated Agriculture Monitoring & Irrigation System\") is implemented u...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 91,
+      "hallucinationRate": 0,
+      "keywordHitRate": 100,
+      "hasCitation": true,
+      "citedPages": [
+        1,
+        2,
+        3
+      ],
+      "latencyMs": 403
+    },
+    {
+      "project": "IoT-Based Automated Agriculture Monitoring & Irrigation System",
+      "branch": "ECE",
+      "question": "How does the system automate drip irrigation based on field conditions?",
+      "answerPreview": "System Implementation Details: This ECE capstone project (\"IoT-Based Automated Agriculture Monitoring & Irrigation System\") is implemented u...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 94,
+      "hallucinationRate": 0,
+      "keywordHitRate": 75,
+      "hasCitation": true,
+      "citedPages": [
+        1,
+        2,
+        3
+      ],
+      "latencyMs": 370
+    },
+    {
+      "project": "IoT-Based Automated Agriculture Monitoring & Irrigation System",
+      "branch": "ECE",
+      "question": "Explain the hardware-to-cloud data pipeline of this agriculture system.",
+      "answerPreview": "It addresses core domain challenges in IoT, Agriculture, Automation, Sensors through modular architecture separating data acquisition/input,...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 95,
+      "hallucinationRate": 0,
+      "keywordHitRate": 100,
+      "hasCitation": true,
+      "citedPages": [
+        2,
+        1,
+        3
+      ],
+      "latencyMs": 382
+    },
+    {
+      "project": "IoT-Based Automated Agriculture Monitoring & Irrigation System",
+      "branch": "ECE",
+      "question": "Which database and frontend dashboard display the sensor readings?",
+      "answerPreview": "Executive Technical Summary & Methodology: An IoT agricultural solution that continuously tracks soil parameters and automates irrigation th...",
+      "faithfulnessScore": 100,
+      "relevanceScore": 92,
+      "hallucinationRate": 0,
+      "keywordHitRate": 100,
+      "hasCitation": true,
+      "citedPages": [
+        1,
+        2,
+        3
+      ],
+      "latencyMs": 398
+    }
+  ],
+  "negativeProbes": [
+    {
+      "project": "AI Based Career Counselling",
+      "question": "Does this project use Solidity smart contracts on the Ethereum blockchain?",
+      "abstained": true,
+      "answer": "The project report for \"AI Based Career Counselling\" does not explicitly cover \"solidity\". The documented scope focuses on Python, JavaScript, Natural Language Processing within the CSE domain.",
+      "latencyMs": 2
+    },
+    {
+      "project": "Autonomous Solar-Powered Quadcopter for Campus Surveillance",
+      "question": "What plutonium nuclear fission reactor core powers the submarine torpedo propulsion?",
+      "abstained": true,
+      "answer": "The project report for \"Autonomous Solar-Powered Quadcopter for Campus Surveillance\" does not explicitly cover \"plutonium\". The documented scope focuses on C++, ROS, Python, OpenCV, SolidWorks within the MECH domain.",
+      "latencyMs": 0
+    },
+    {
+      "project": "Blockchain-Powered Academic Credential Verification",
+      "question": "How does the HIPAA blood pressure cuff hardware calibrate surgical lasers?",
+      "abstained": true,
+      "answer": "The project report for \"Blockchain-Powered Academic Credential Verification\" does not explicitly cover \"blood pressure cuff\". The documented scope focuses on Solidity, Ethereum, React, Node.js, Web3.js within the IT domain.",
+      "latencyMs": 0
+    },
+    {
+      "project": "IoT-Based Automated Agriculture Monitoring & Irrigation System",
+      "question": "How does the high-frequency stock market trading engine execute Stripe credit card billing?",
+      "abstained": true,
+      "answer": "The project report for \"IoT-Based Automated Agriculture Monitoring & Irrigation System\" does not explicitly cover \"credit card billing\". The documented scope focuses on Arduino, Node.js, MQTT, React, MongoDB within the ECE domain.",
+      "latencyMs": 0
+    }
+  ],
+  "diagramEvaluations": [
+    {
+      "project": "AI Based Career Counselling",
+      "branch": "CSE",
+      "syntaxValid": true,
+      "nodeCount": 12,
+      "edgeCount": 11,
+      "subgraphCount": 3,
+      "entityCoverageScore": 100,
+      "generationLatencyMs": 1,
+      "diagramSample": "flowchart LR |     subgraph Input_Layer[\"1. User Interface and Data Ingestion\"] |         A[\"User Interface & Registration (JavaScript, HTML, CSS)\"] |         B[\"Dynamic Questionnaire & User Input Collection\"] |     end | "
+    },
+    {
+      "project": "Autonomous Solar-Powered Quadcopter for Campus Surveillance",
+      "branch": "MECH",
+      "syntaxValid": true,
+      "nodeCount": 12,
+      "edgeCount": 12,
+      "subgraphCount": 3,
+      "entityCoverageScore": 100,
+      "generationLatencyMs": 1,
+      "diagramSample": "flowchart LR |     subgraph Input_Layer[\"1. User Interface and Data Ingestion\"] |         A[\"Scheduled Patrol Configuration (Python)\"] |         B[\"Solar Energy Input Monitoring (Sensor Data)\"] |     end | "
+    },
+    {
+      "project": "Blockchain-Powered Academic Credential Verification",
+      "branch": "IT",
+      "syntaxValid": true,
+      "nodeCount": 10,
+      "edgeCount": 12,
+      "subgraphCount": 3,
+      "entityCoverageScore": 100,
+      "generationLatencyMs": 1,
+      "diagramSample": "flowchart LR |     subgraph Input_Layer[\"1. User Interface and Data Ingestion\"] |         A[\"University Staff/Student Portal (React)\"] |     end |  |     subgraph Core_Compute[\"2. Core System Modules and Processing Engine\"]"
+    },
+    {
+      "project": "IoT-Based Automated Agriculture Monitoring & Irrigation System",
+      "branch": "ECE",
+      "syntaxValid": true,
+      "nodeCount": 12,
+      "edgeCount": 10,
+      "subgraphCount": 3,
+      "entityCoverageScore": 100,
+      "generationLatencyMs": 0,
+      "diagramSample": "flowchart LR |     subgraph Input_Layer[\"1. User Interface and Data Ingestion\"] |         Sensors[\"Environmental Sensors (Soil Moisture, Temp, Humidity)\"] |         Arduino_Controller[\"Sensor Data Acquisition (Arduino)\"] |         MQTT_Broker_Ingest[\"IoT Data Ingestion (MQTT Broker)\"] | "
+    }
+  ]
+}
