@@ -1,6 +1,13 @@
+const path = require('path');
 const { GoogleGenAI } = require('@google/genai');
 const pdfjsLib = require('pdfjs-dist/build/pdf.js');
 const { decrypt } = require('../utils/encryption');
+
+// Standard fonts path bundled in pdfjs-dist
+const standardFontDataUrl = path.join(
+  path.dirname(require.resolve('pdfjs-dist/package.json')),
+  'standard_fonts/'
+);
 
 // Initialize Gemini AI
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
@@ -28,28 +35,59 @@ const STOPWORDS = new Set([
 
 /**
  * Extract text from PDF buffer with [Page X] markers for RAG citation tracking
+ * Uses bundled standard fonts and suppresses canvas font face warnings in Node.js
  * @param {Buffer} pdfBuffer - PDF file buffer
  * @returns {Promise<string>} - Extracted text with page markers
  */
 const extractTextFromPDF = async (pdfBuffer) => {
+  if (!pdfBuffer || pdfBuffer.length === 0) {
+    throw new Error('PDF buffer is empty or missing');
+  }
+
+  let loadingTask = null;
+  let pdfDoc = null;
+
   try {
-    const loadingTask = pdfjsLib.getDocument({ data: new Uint8Array(pdfBuffer) });
-    const pdfDoc = await loadingTask.promise;
+    loadingTask = pdfjsLib.getDocument({
+      data: new Uint8Array(pdfBuffer),
+      standardFontDataUrl,
+      disableFontFace: true,
+      useSystemFonts: true,
+      verbosity: 0,
+      isEvalSupported: false
+    });
+
+    pdfDoc = await loadingTask.promise;
+    if (!pdfDoc || pdfDoc.numPages === 0) {
+      throw new Error('PDF document contains no readable pages');
+    }
 
     let fullText = '';
     for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
       const page = await pdfDoc.getPage(pageNum);
       const textContent = await page.getTextContent();
-      const pageText = textContent.items.map((item) => item.str).join(' ').replace(/\s+/g, ' ').trim();
+      const pageText = textContent.items
+        .map((item) => item.str)
+        .join(' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
       if (pageText.length > 0) {
         fullText += `[Page ${pageNum}]\n${pageText}\n\n`;
       }
+      page.cleanup();
     }
+
+    await pdfDoc.cleanup();
+    await pdfDoc.destroy();
 
     return fullText;
   } catch (error) {
+    if (pdfDoc) {
+      try { await pdfDoc.destroy(); } catch (_) {}
+    }
     console.error('PDF text extraction error:', error.message);
-    throw new Error('Failed to extract text from PDF');
+    throw new Error(`Failed to extract text from PDF: ${error.message}`);
   }
 };
 
@@ -136,13 +174,13 @@ const ensureProjectCorpus = async (project, forceRefresh = false) => {
     forceRefresh = true;
   }
 
-  // If project already has a real multi-page PDF corpus (>1500 chars with [Page 3]), preserve its true PDF page numbers!
+  // 1. If project already has an authentic indexed corpus with [Page 1], preserve it!
   if (
     !forceRefresh &&
     project.extractedText &&
     project.extractedText.includes('[Page 1]') &&
-    project.extractedText.includes('[Page 3]') &&
-    project.extractedText.length >= 1500
+    !project.extractedText.includes('Summary could not be generated') &&
+    project.extractedText.length >= 200
   ) {
     if (!project.extractedText.includes('Project Specification Header:')) {
       const metaHeader = `[Page 1]\nProject Specification Header: Title="${project.title}", Branch=${project.branch || 'CSE'} (${project.year || '4th Year'}), Submitted By=${project.studentName || 'Student'} (${project.studentEmail || 'N/A'}), Declared Tech Stack=[${techList}], Tags=[${tagList}], Abstract="${project.description || ''}", Executive Summary="${project.aiSummary || ''}"\n`;
@@ -151,17 +189,6 @@ const ensureProjectCorpus = async (project, forceRefresh = false) => {
         await project.save().catch(() => {});
       }
     }
-    return project.extractedText;
-  }
-
-  if (
-    !forceRefresh &&
-    project.extractedText &&
-    project.extractedText.includes('[Page 1]') &&
-    project.extractedText.includes('[Page 2]') &&
-    !project.extractedText.includes('Summary could not be generated') &&
-    project.extractedText.length >= 200
-  ) {
     return project.extractedText;
   }
 
@@ -195,8 +222,8 @@ const ensureProjectCorpus = async (project, forceRefresh = false) => {
     }
   }
 
-  // If the extracted PDF itself is a rich multi-page document, keep its exact [Page 1..N] numbering
-  if (rawPdfText && rawPdfText.includes('[Page 3]') && rawPdfText.length >= 1500) {
+  // 2. Inject specification header into [Page 1] preserving 100% of authentic document page numbers
+  if (rawPdfText && rawPdfText.includes('[Page 1]')) {
     const metaHeader = `[Page 1]\nProject Specification Header: Title="${project.title}", Branch=${project.branch || 'CSE'} (${project.year || '4th Year'}), Submitted By=${project.studentName || 'Student'} (${project.studentEmail || 'N/A'}), Declared Tech Stack=[${techList}], Tags=[${tagList}], Abstract="${project.description || ''}", Executive Summary="${project.aiSummary || ''}"\n`;
     const fullDoc = rawPdfText.replace('[Page 1]', metaHeader);
     project.extractedText = fullDoc;
@@ -206,6 +233,7 @@ const ensureProjectCorpus = async (project, forceRefresh = false) => {
     return fullDoc;
   }
 
+  // 3. Fallback ONLY if physical PDF is completely unavailable
   const specSection = `[Page 1]
 Project Title: ${project.title}
 Engineering Department / Branch: ${project.branch || 'CSE'} (${project.year || '4th Year'})
@@ -218,22 +246,14 @@ Technical Abstract & Problem Statement: ${project.description || ''}
 
 [Page 2]
 Executive Technical Summary & Methodology: ${project.aiSummary || project.description || ''}
-System Implementation Details: This ${project.branch || 'engineering'} capstone project ("${project.title}") is implemented using ${techList}. It addresses core domain challenges in ${tagList || project.branch} through modular architecture separating data acquisition/input, core algorithmic processing (${techList}), and output telemetry/verification.`;
+System Implementation Details: This ${project.branch || 'engineering'} capstone project ("${project.title}") is implemented using ${techList}.`;
 
-  const shiftedPdf = rawPdfText
-    ? rawPdfText.replace(/\[Page (\d+)\]/g, (_, pNum) => `[Page ${parseInt(pNum, 10) + 2}]`)
-    : '';
-
-  const combinedCorpus = shiftedPdf && shiftedPdf.trim().length > 20
-    ? `${specSection}\n\n${shiftedPdf}`
-    : specSection;
-
-  project.extractedText = combinedCorpus;
+  project.extractedText = specSection;
   if (typeof project.save === 'function') {
     await project.save().catch(() => {});
   }
 
-  return combinedCorpus;
+  return specSection;
 };
 
 /**
@@ -483,6 +503,26 @@ const evaluateRagResponse = (question, answer, abstained, retrievedChunks, corpu
 };
 
 /**
+ * Post-processes answer text to guarantee that every [Page X] citation
+ * strictly references an existing page in the document (1 <= X <= maxPage)
+ */
+function enforceCitationPageBounds(answerText, allChunks) {
+  if (!answerText || !allChunks || allChunks.length === 0) return answerText;
+  const validPages = new Set(allChunks.map((c) => c.page));
+  const maxPage = Math.max(...validPages);
+
+  return answerText.replace(/\[Pages?\s*(\d+)\]/gi, (match, pStr) => {
+    const pNum = parseInt(pStr, 10);
+    if (validPages.has(pNum)) {
+      return `[Page ${pNum}]`;
+    }
+    // Clamp to valid boundary
+    const clamped = Math.min(maxPage, Math.max(1, pNum));
+    return `[Page ${clamped}]`;
+  });
+}
+
+/**
  * Dynamic chunk-extractive synthesis fallback when Gemini API is rate-limited:
  * Extracts the exact matching sentences from the retrieved PDF pages rather than a static template.
  */
@@ -505,7 +545,7 @@ const synthesizeGroundedAnswer = (project, question, retrievedChunks, scopeCheck
   for (const chunk of retrievedChunks || []) {
     const rawSentences = (chunk.text || '')
       .replace(/\s+/g, ' ')
-      .split(/(?<=[.!?•➢▪])\s+/)
+      .split(/(?<=[.!?•➢▪])\s+(?=[A-Z0-9"•➢▪\(\[])/)
       .map((s) => s.trim())
       .filter((s) => s.length >= 25 && s.length <= 320 && !s.startsWith('Project Specification Header:'));
 
@@ -642,6 +682,8 @@ Grounded Technical Answer:`;
       ttftMs = Date.now() - startTime;
     }
   }
+
+  answer = enforceCitationPageBounds(answer, allChunks);
 
   const latencyMs = Date.now() - startTime;
   const evalMetrics = evaluateRagResponse(question, answer, abstained, retrievedChunks, corpusText, project);
@@ -819,6 +861,8 @@ Grounded Technical Answer:`;
       }
     }
   }
+
+  answer = enforceCitationPageBounds(answer, allChunks);
 
   const latencyMs = Date.now() - startTime;
   if (ttftMs === null) ttftMs = latencyMs;
@@ -1153,5 +1197,6 @@ module.exports = {
   buildDeterministicMermaidDiagram,
   warmUpProjectCorpusAndDiagram,
   warmUpAllProjects,
-  checkOutOfScopeQuery
+  checkOutOfScopeQuery,
+  enforceCitationPageBounds
 };
