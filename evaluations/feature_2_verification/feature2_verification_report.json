@@ -1,0 +1,783 @@
+{
+  "suite": "UniversityHub Feature 2 Empirical Verification Suite",
+  "evaluatedAt": "2026-11-13T11:55:19.141Z",
+  "datasetSource": "D:\\data backup viktus\\desktop\\DOWNLOADS\\university_hub\\server\\data\\capstones\\ingested_projects.json",
+  "projectsCount": 5,
+  "aggregateMetrics": {
+    "totalTests": 35,
+    "passedTests": 35,
+    "failedTests": 0,
+    "passRate": 100,
+    "totalAssertions": 176,
+    "passedAssertions": 176,
+    "failedAssertions": 0,
+    "durationMs": 731,
+    "ragFaithfulnessAvg": 100,
+    "ragRelevanceAvg": 96,
+    "ragHallucinationAvg": 0,
+    "ragKeywordHitRateAvg": 98.3,
+    "ragCitationCoverageRate": 100,
+    "diagramAstPassRate": 100,
+    "diagramEntityCoverageAvg": 100,
+    "sseStreamingPassRate": 100,
+    "sseAverageTtftMs": 8,
+    "negativeRejectionAccuracy": 100,
+    "negativeHallucinationRate": 0,
+    "autoTagFormattingPassRate": 100
+  },
+  "testResults": [
+    {
+      "category": "RAG_Copilot_QA_And_Citations",
+      "testId": "CSE-Q1",
+      "projectTitle": "Autonomous Drone Positioning and Real-time Object Detection",
+      "description": "Positive Question: \"What hardware flight controller and companion onboard c...\"",
+      "status": "PASS",
+      "metrics": {
+        "faithfulnessScore": 100,
+        "relevanceScore": 95,
+        "hallucinationRate": 0,
+        "keywordHitRate": 100,
+        "matchedKeywords": [
+          "Pixhawk",
+          "PX4",
+          "flight controller"
+        ],
+        "citationCount": 3,
+        "citedPages": [
+          4,
+          4,
+          7
+        ],
+        "latencyMs": 490
+      },
+      "details": "Answer preview: To begin with, the autonomous flight control is usually implemented using ardupilot and pixhawk autopilot hard..."
+    },
+    {
+      "category": "RAG_Copilot_QA_And_Citations",
+      "testId": "CSE-Q2",
+      "projectTitle": "Autonomous Drone Positioning and Real-time Object Detection",
+      "description": "Positive Question: \"Which deep learning object detection model and SLAM lib...\"",
+      "status": "PASS",
+      "metrics": {
+        "faithfulnessScore": 100,
+        "relevanceScore": 97,
+        "hallucinationRate": 0,
+        "keywordHitRate": 75,
+        "matchedKeywords": [
+          "YOLOv5",
+          "SLAM",
+          "object detection"
+        ],
+        "citationCount": 3,
+        "citedPages": [
+          16,
+          4,
+          16
+        ],
+        "latencyMs": 11
+      },
+      "details": "Answer preview: The Jetson Nano’s GPU is limiting the performance of the SLAM model and is definitely not enough for running t..."
+    },
+    {
+      "category": "RAG_Copilot_QA_And_Citations",
+      "testId": "CSE-Q3",
+      "projectTitle": "Autonomous Drone Positioning and Real-time Object Detection",
+      "description": "Positive Question: \"How does the web mission control dashboard communicate ...\"",
+      "status": "PASS",
+      "metrics": {
+        "faithfulnessScore": 100,
+        "relevanceScore": 97,
+        "hallucinationRate": 0,
+        "keywordHitRate": 100,
+        "matchedKeywords": [
+          "ROS",
+          "MAVROS",
+          "Spring Boot"
+        ],
+        "citationCount": 3,
+        "citedPages": [
+          7,
+          9,
+          8
+        ],
+        "latencyMs": 8
+      },
+      "details": "Answer preview: ROS had a package named MAVROS which we used in order to communicate with the flight controller on our drone u..."
+    },
+    {
+      "category": "Mermaid_Architecture_Diagram",
+      "testId": "drone_positioning_DIAGRAM",
+      "projectTitle": "Autonomous Drone Positioning and Real-time Object Detection",
+      "description": "Dynamic Mermaid Diagram AST Syntax & Entity Coverage",
+      "status": "PASS",
+      "metrics": {
+        "syntaxValid": true,
+        "nodeCount": 11,
+        "edgeCount": 9,
+        "subgraphCount": 3,
+        "entityCoverageScore": 100,
+        "generationLatencyMs": 0
+      },
+      "details": "AST validated with 11 nodes, 9 edges, 100% tech coverage"
+    },
+    {
+      "category": "SSE_Streaming_Delivery",
+      "testId": "drone_positioning_SSE",
+      "projectTitle": "Autonomous Drone Positioning and Real-time Object Detection",
+      "description": "Server-Sent Events Token Streaming Protocol",
+      "status": "PASS",
+      "metrics": {
+        "totalStreamEvents": 18,
+        "tokenChunksEmitted": 16,
+        "ttftMs": 7,
+        "faithfulnessScore": 100,
+        "streamLatencyMs": 7
+      },
+      "details": "Events order: citations -> 16 tokens -> done"
+    },
+    {
+      "category": "AutoTagging_Domain_Classification",
+      "testId": "drone_positioning_AUTOTAG",
+      "projectTitle": "Autonomous Drone Positioning and Real-time Object Detection",
+      "description": "Domain Classification & Title-Case-With-Hyphens Extraction",
+      "status": "PASS",
+      "metrics": {
+        "techStackCount": 10,
+        "tagsCount": 2,
+        "sampleTech": [
+          "C++",
+          "Python",
+          "ROS",
+          "MAVROS",
+          "PX4"
+        ],
+        "sampleTags": [
+          "CSE-Engineering",
+          "Academic-Project"
+        ]
+      },
+      "details": "Discovered 10 tech entities and 2 tags"
+    },
+    {
+      "category": "Adversarial_OutOfScope_Rejection",
+      "testId": "CSE-NEG",
+      "projectTitle": "Autonomous Drone Positioning and Real-time Object Detection",
+      "description": "Adversarial Probe: \"How does the mars rover landing parachute deploy o...\"",
+      "status": "PASS",
+      "metrics": {
+        "isOutOfScope": true,
+        "missingTerm": "mars rover landing parachute",
+        "abstained": true,
+        "hallucinationRate": 0,
+        "faithfulnessScore": 100,
+        "latencyMs": 3
+      },
+      "details": "Clean Refusal: The project report for \"Autonomous Drone Positioning and Real-time Object Detection\" does not explic..."
+    },
+    {
+      "category": "RAG_Copilot_QA_And_Citations",
+      "testId": "ECE-Q1",
+      "projectTitle": "Smart Home Automation Integrated with Web Interface and ESP8266 Module",
+      "description": "Positive Question: \"What microcontroller and Wi-Fi chip are used to read se...\"",
+      "status": "PASS",
+      "metrics": {
+        "faithfulnessScore": 100,
+        "relevanceScore": 93,
+        "hallucinationRate": 0,
+        "keywordHitRate": 100,
+        "matchedKeywords": [
+          "ESP8266",
+          "relay",
+          "appliances"
+        ],
+        "citationCount": 3,
+        "citedPages": [
+          1,
+          1,
+          1
+        ],
+        "latencyMs": 2
+      },
+      "details": "Answer preview: The 4 Channel Relay Module controls various appliances, while the Water level sensor, magnetic reed switch, an..."
+    },
+    {
+      "category": "RAG_Copilot_QA_And_Citations",
+      "testId": "ECE-Q2",
+      "projectTitle": "Smart Home Automation Integrated with Web Interface and ESP8266 Module",
+      "description": "Positive Question: \"Which environmental and security sensors are deployed i...\"",
+      "status": "PASS",
+      "metrics": {
+        "faithfulnessScore": 100,
+        "relevanceScore": 95,
+        "hallucinationRate": 0,
+        "keywordHitRate": 100,
+        "matchedKeywords": [
+          "appliances",
+          "environmental",
+          "magnetic reed",
+          "security"
+        ],
+        "citationCount": 3,
+        "citedPages": [
+          1,
+          1,
+          1
+        ],
+        "latencyMs": 1
+      },
+      "details": "Answer preview: oard accessible via secure Ngrok tunnels.\" Smart Home Automation integrated with Web Interface and ESP8266 Mod..."
+    },
+    {
+      "category": "RAG_Copilot_QA_And_Citations",
+      "testId": "ECE-Q3",
+      "projectTitle": "Smart Home Automation Integrated with Web Interface and ESP8266 Module",
+      "description": "Positive Question: \"How does the web application communicate with the local...\"",
+      "status": "PASS",
+      "metrics": {
+        "faithfulnessScore": 100,
+        "relevanceScore": 94,
+        "hallucinationRate": 0,
+        "keywordHitRate": 100,
+        "matchedKeywords": [
+          "Ngrok",
+          "tunnel",
+          "web"
+        ],
+        "citationCount": 3,
+        "citedPages": [
+          1,
+          1,
+          1
+        ],
+        "latencyMs": 3
+      },
+      "details": "Answer preview: oard accessible via secure Ngrok tunnels.\" Smart Home Automation integrated with Web Interface and ESP8266 Mod..."
+    },
+    {
+      "category": "Mermaid_Architecture_Diagram",
+      "testId": "smarthome_esp8266_DIAGRAM",
+      "projectTitle": "Smart Home Automation Integrated with Web Interface and ESP8266 Module",
+      "description": "Dynamic Mermaid Diagram AST Syntax & Entity Coverage",
+      "status": "PASS",
+      "metrics": {
+        "syntaxValid": true,
+        "nodeCount": 14,
+        "edgeCount": 10,
+        "subgraphCount": 3,
+        "entityCoverageScore": 100,
+        "generationLatencyMs": 0
+      },
+      "details": "AST validated with 14 nodes, 10 edges, 100% tech coverage"
+    },
+    {
+      "category": "SSE_Streaming_Delivery",
+      "testId": "smarthome_esp8266_SSE",
+      "projectTitle": "Smart Home Automation Integrated with Web Interface and ESP8266 Module",
+      "description": "Server-Sent Events Token Streaming Protocol",
+      "status": "PASS",
+      "metrics": {
+        "totalStreamEvents": 28,
+        "tokenChunksEmitted": 26,
+        "ttftMs": 3,
+        "faithfulnessScore": 100,
+        "streamLatencyMs": 3
+      },
+      "details": "Events order: citations -> 26 tokens -> done"
+    },
+    {
+      "category": "AutoTagging_Domain_Classification",
+      "testId": "smarthome_esp8266_AUTOTAG",
+      "projectTitle": "Smart Home Automation Integrated with Web Interface and ESP8266 Module",
+      "description": "Domain Classification & Title-Case-With-Hyphens Extraction",
+      "status": "PASS",
+      "metrics": {
+        "techStackCount": 10,
+        "tagsCount": 5,
+        "sampleTech": [
+          "Arduino",
+          "C++",
+          "ESP8266",
+          "NodeMCU",
+          "Node.js"
+        ],
+        "sampleTags": [
+          "ECE-Engineering",
+          "Web-Development",
+          "Mobile-Development",
+          "IoT",
+          "Academic-Project"
+        ]
+      },
+      "details": "Discovered 10 tech entities and 5 tags"
+    },
+    {
+      "category": "Adversarial_OutOfScope_Rejection",
+      "testId": "ECE-NEG",
+      "projectTitle": "Smart Home Automation Integrated with Web Interface and ESP8266 Module",
+      "description": "Adversarial Probe: \"What quantum teleportation protocol secures the sm...\"",
+      "status": "PASS",
+      "metrics": {
+        "isOutOfScope": true,
+        "missingTerm": "quantum teleportation",
+        "abstained": true,
+        "hallucinationRate": 0,
+        "faithfulnessScore": 100,
+        "latencyMs": 1
+      },
+      "details": "Clean Refusal: The project report for \"Smart Home Automation Integrated with Web Interface and ESP8266 Module\" does..."
+    },
+    {
+      "category": "RAG_Copilot_QA_And_Citations",
+      "testId": "EEE-Q1",
+      "projectTitle": "Active Noise Control (ANC) System for Automobiles",
+      "description": "Positive Question: \"What acoustic noise cancellation mechanism and FXLMS ad...\"",
+      "status": "PASS",
+      "metrics": {
+        "faithfulnessScore": 100,
+        "relevanceScore": 96,
+        "hallucinationRate": 0,
+        "keywordHitRate": 100,
+        "matchedKeywords": [
+          "FXLMS",
+          "filter",
+          "noise",
+          "cancel"
+        ],
+        "citationCount": 3,
+        "citedPages": [
+          29,
+          29,
+          29
+        ],
+        "latencyMs": 9
+      },
+      "details": "Answer preview: The FXLMS algorithm will receive the error and reference signal and adjust the coefficients of the filter to m..."
+    },
+    {
+      "category": "RAG_Copilot_QA_And_Citations",
+      "testId": "EEE-Q2",
+      "projectTitle": "Active Noise Control (ANC) System for Automobiles",
+      "description": "Positive Question: \"What software tools and MATLAB simulations are utilized...\"",
+      "status": "PASS",
+      "metrics": {
+        "faithfulnessScore": 100,
+        "relevanceScore": 96,
+        "hallucinationRate": 0,
+        "keywordHitRate": 100,
+        "matchedKeywords": [
+          "MATLAB",
+          "adaptive",
+          "filter",
+          "code"
+        ],
+        "citationCount": 3,
+        "citedPages": [
+          46,
+          50,
+          51
+        ],
+        "latencyMs": 32
+      },
+      "details": "Answer preview: The project involves advanced sig nal processing techniques, adjusting coefficient of adaptive filters, coding..."
+    },
+    {
+      "category": "RAG_Copilot_QA_And_Citations",
+      "testId": "EEE-Q3",
+      "projectTitle": "Active Noise Control (ANC) System for Automobiles",
+      "description": "Positive Question: \"Explain the role of the reference microphone and error ...\"",
+      "status": "PASS",
+      "metrics": {
+        "faithfulnessScore": 100,
+        "relevanceScore": 99,
+        "hallucinationRate": 0,
+        "keywordHitRate": 100,
+        "matchedKeywords": [
+          "reference microphone",
+          "error microphone",
+          "microphones",
+          "noise"
+        ],
+        "citationCount": 3,
+        "citedPages": [
+          29,
+          12,
+          22
+        ],
+        "latencyMs": 15
+      },
+      "details": "Answer preview: That is, the noise source, reference microphone, error microphone, canceling loudspeaker, and ANC algorithm, a..."
+    },
+    {
+      "category": "Mermaid_Architecture_Diagram",
+      "testId": "anc_automobiles_DIAGRAM",
+      "projectTitle": "Active Noise Control (ANC) System for Automobiles",
+      "description": "Dynamic Mermaid Diagram AST Syntax & Entity Coverage",
+      "status": "PASS",
+      "metrics": {
+        "syntaxValid": true,
+        "nodeCount": 12,
+        "edgeCount": 9,
+        "subgraphCount": 3,
+        "entityCoverageScore": 100,
+        "generationLatencyMs": 0
+      },
+      "details": "AST validated with 12 nodes, 9 edges, 100% tech coverage"
+    },
+    {
+      "category": "SSE_Streaming_Delivery",
+      "testId": "anc_automobiles_SSE",
+      "projectTitle": "Active Noise Control (ANC) System for Automobiles",
+      "description": "Server-Sent Events Token Streaming Protocol",
+      "status": "PASS",
+      "metrics": {
+        "totalStreamEvents": 17,
+        "tokenChunksEmitted": 15,
+        "ttftMs": 10,
+        "faithfulnessScore": 100,
+        "streamLatencyMs": 11
+      },
+      "details": "Events order: citations -> 15 tokens -> done"
+    },
+    {
+      "category": "AutoTagging_Domain_Classification",
+      "testId": "anc_automobiles_AUTOTAG",
+      "projectTitle": "Active Noise Control (ANC) System for Automobiles",
+      "description": "Domain Classification & Title-Case-With-Hyphens Extraction",
+      "status": "PASS",
+      "metrics": {
+        "techStackCount": 8,
+        "tagsCount": 3,
+        "sampleTech": [
+          "C++",
+          "MATLAB",
+          "DSP",
+          "FxLMS",
+          "Adaptive Filter"
+        ],
+        "sampleTags": [
+          "EEE-Engineering",
+          "Mobile-Development",
+          "Academic-Project"
+        ]
+      },
+      "details": "Discovered 8 tech entities and 3 tags"
+    },
+    {
+      "category": "Adversarial_OutOfScope_Rejection",
+      "testId": "EEE-NEG",
+      "projectTitle": "Active Noise Control (ANC) System for Automobiles",
+      "description": "Adversarial Probe: \"How does the bitcoin mining rig operate inside the...\"",
+      "status": "PASS",
+      "metrics": {
+        "isOutOfScope": true,
+        "missingTerm": "bitcoin mining rig",
+        "abstained": true,
+        "hallucinationRate": 0,
+        "faithfulnessScore": 100,
+        "latencyMs": 10
+      },
+      "details": "Clean Refusal: The project report for \"Active Noise Control (ANC) System for Automobiles\" does not explicitly cover..."
+    },
+    {
+      "category": "RAG_Copilot_QA_And_Citations",
+      "testId": "IT-Q1",
+      "projectTitle": "Hospital Management Information System",
+      "description": "Positive Question: \"What database system, SQL queries, and tables are desig...\"",
+      "status": "PASS",
+      "metrics": {
+        "faithfulnessScore": 100,
+        "relevanceScore": 97,
+        "hallucinationRate": 0,
+        "keywordHitRate": 100,
+        "matchedKeywords": [
+          "Hospital Management System",
+          "database",
+          "tables"
+        ],
+        "citationCount": 3,
+        "citedPages": [
+          3,
+          4,
+          3
+        ],
+        "latencyMs": 6
+      },
+      "details": "Answer preview: Hospital Management System Final Project Report 3 Project Overview The database schema is designed for the Hos..."
+    },
+    {
+      "category": "RAG_Copilot_QA_And_Citations",
+      "testId": "IT-Q2",
+      "projectTitle": "Hospital Management Information System",
+      "description": "Positive Question: \"What entities, tables, departments, and patient records...\"",
+      "status": "PASS",
+      "metrics": {
+        "faithfulnessScore": 100,
+        "relevanceScore": 97,
+        "hallucinationRate": 0,
+        "keywordHitRate": 100,
+        "matchedKeywords": [
+          "entities",
+          "database tables",
+          "patients",
+          "information"
+        ],
+        "citationCount": 3,
+        "citedPages": [
+          20,
+          3,
+          3
+        ],
+        "latencyMs": 4
+      },
+      "details": "Answer preview: Understanding how to normalize the data helped in the design of database tables and associative entities. [Pag..."
+    },
+    {
+      "category": "RAG_Copilot_QA_And_Citations",
+      "testId": "IT-Q3",
+      "projectTitle": "Hospital Management Information System",
+      "description": "Positive Question: \"How are database normalization, 3NF, and table relation...\"",
+      "status": "PASS",
+      "metrics": {
+        "faithfulnessScore": 100,
+        "relevanceScore": 95,
+        "hallucinationRate": 0,
+        "keywordHitRate": 100,
+        "matchedKeywords": [
+          "normalize",
+          "database",
+          "tables"
+        ],
+        "citationCount": 3,
+        "citedPages": [
+          4,
+          20,
+          3
+        ],
+        "latencyMs": 7
+      },
+      "details": "Answer preview: The Hospital Management System Database contains fifteen tables. [Page 4] Understanding how to normalize the d..."
+    },
+    {
+      "category": "Mermaid_Architecture_Diagram",
+      "testId": "hospital_management_DIAGRAM",
+      "projectTitle": "Hospital Management Information System",
+      "description": "Dynamic Mermaid Diagram AST Syntax & Entity Coverage",
+      "status": "PASS",
+      "metrics": {
+        "syntaxValid": true,
+        "nodeCount": 12,
+        "edgeCount": 9,
+        "subgraphCount": 3,
+        "entityCoverageScore": 100,
+        "generationLatencyMs": 0
+      },
+      "details": "AST validated with 12 nodes, 9 edges, 100% tech coverage"
+    },
+    {
+      "category": "SSE_Streaming_Delivery",
+      "testId": "hospital_management_SSE",
+      "projectTitle": "Hospital Management Information System",
+      "description": "Server-Sent Events Token Streaming Protocol",
+      "status": "PASS",
+      "metrics": {
+        "totalStreamEvents": 15,
+        "tokenChunksEmitted": 13,
+        "ttftMs": 3,
+        "faithfulnessScore": 100,
+        "streamLatencyMs": 3
+      },
+      "details": "Events order: citations -> 13 tokens -> done"
+    },
+    {
+      "category": "AutoTagging_Domain_Classification",
+      "testId": "hospital_management_AUTOTAG",
+      "projectTitle": "Hospital Management Information System",
+      "description": "Domain Classification & Title-Case-With-Hyphens Extraction",
+      "status": "PASS",
+      "metrics": {
+        "techStackCount": 8,
+        "tagsCount": 4,
+        "sampleTech": [
+          "SQL",
+          "Oracle",
+          "PL/SQL",
+          "Relational Database",
+          "ER Modeling"
+        ],
+        "sampleTags": [
+          "IT-Engineering",
+          "Artificial-Intelligence",
+          "Data-Science",
+          "Academic-Project"
+        ]
+      },
+      "details": "Discovered 8 tech entities and 4 tags"
+    },
+    {
+      "category": "Adversarial_OutOfScope_Rejection",
+      "testId": "IT-NEG",
+      "projectTitle": "Hospital Management Information System",
+      "description": "Adversarial Probe: \"Does this hospital system use a nuclear reactor fo...\"",
+      "status": "PASS",
+      "metrics": {
+        "isOutOfScope": true,
+        "missingTerm": "nuclear reactor",
+        "abstained": true,
+        "hallucinationRate": 0,
+        "faithfulnessScore": 100,
+        "latencyMs": 1
+      },
+      "details": "Clean Refusal: The project report for \"Hospital Management Information System\" does not explicitly cover \"nuclear r..."
+    },
+    {
+      "category": "RAG_Copilot_QA_And_Citations",
+      "testId": "CSE-MED-Q1",
+      "projectTitle": "Brain Tumor Detection Using Convolutional Neural Networks",
+      "description": "Positive Question: \"What imaging modality, CNN architecture, and deep learn...\"",
+      "status": "PASS",
+      "metrics": {
+        "faithfulnessScore": 100,
+        "relevanceScore": 96,
+        "hallucinationRate": 0,
+        "keywordHitRate": 100,
+        "matchedKeywords": [
+          "MR images",
+          "CNN",
+          "deep learning"
+        ],
+        "citationCount": 3,
+        "citedPages": [
+          22,
+          34,
+          12
+        ],
+        "latencyMs": 15
+      },
+      "details": "Answer preview: In these, they have proposed systems with a novel mechanism for detecting tumors from MR images by applying ma..."
+    },
+    {
+      "category": "RAG_Copilot_QA_And_Citations",
+      "testId": "CSE-MED-Q2",
+      "projectTitle": "Brain Tumor Detection Using Convolutional Neural Networks",
+      "description": "Positive Question: \"What preprocessing, image resizing, and OpenCV data pro...\"",
+      "status": "PASS",
+      "metrics": {
+        "faithfulnessScore": 100,
+        "relevanceScore": 96,
+        "hallucinationRate": 0,
+        "keywordHitRate": 100,
+        "matchedKeywords": [
+          "preprocessing",
+          "MRI",
+          "image"
+        ],
+        "citationCount": 3,
+        "citedPages": [
+          30,
+          30,
+          30
+        ],
+        "latencyMs": 7
+      },
+      "details": "Answer preview: Fig 5.4 Pituitary Tumor MRIs 5.3 IMAGE PREPROCESSING : The Brain MRI image dataset has been downloaded from Ka..."
+    },
+    {
+      "category": "RAG_Copilot_QA_And_Citations",
+      "testId": "CSE-MED-Q3",
+      "projectTitle": "Brain Tumor Detection Using Convolutional Neural Networks",
+      "description": "Positive Question: \"What accuracy, performance metrics, and evaluation resu...\"",
+      "status": "PASS",
+      "metrics": {
+        "faithfulnessScore": 100,
+        "relevanceScore": 97,
+        "hallucinationRate": 0,
+        "keywordHitRate": 100,
+        "matchedKeywords": [
+          "accuracy",
+          "evaluation",
+          "training",
+          "model"
+        ],
+        "citationCount": 3,
+        "citedPages": [
+          23,
+          23,
+          39
+        ],
+        "latencyMs": 11
+      },
+      "details": "Answer preview: We chose a deep learning technique like CNN because of its superior performance when it comes to image process..."
+    },
+    {
+      "category": "Mermaid_Architecture_Diagram",
+      "testId": "brain_tumor_cnn_DIAGRAM",
+      "projectTitle": "Brain Tumor Detection Using Convolutional Neural Networks",
+      "description": "Dynamic Mermaid Diagram AST Syntax & Entity Coverage",
+      "status": "PASS",
+      "metrics": {
+        "syntaxValid": true,
+        "nodeCount": 12,
+        "edgeCount": 8,
+        "subgraphCount": 3,
+        "entityCoverageScore": 100,
+        "generationLatencyMs": 0
+      },
+      "details": "AST validated with 12 nodes, 8 edges, 100% tech coverage"
+    },
+    {
+      "category": "SSE_Streaming_Delivery",
+      "testId": "brain_tumor_cnn_SSE",
+      "projectTitle": "Brain Tumor Detection Using Convolutional Neural Networks",
+      "description": "Server-Sent Events Token Streaming Protocol",
+      "status": "PASS",
+      "metrics": {
+        "totalStreamEvents": 32,
+        "tokenChunksEmitted": 30,
+        "ttftMs": 17,
+        "faithfulnessScore": 100,
+        "streamLatencyMs": 17
+      },
+      "details": "Events order: citations -> 30 tokens -> done"
+    },
+    {
+      "category": "AutoTagging_Domain_Classification",
+      "testId": "brain_tumor_cnn_AUTOTAG",
+      "projectTitle": "Brain Tumor Detection Using Convolutional Neural Networks",
+      "description": "Domain Classification & Title-Case-With-Hyphens Extraction",
+      "status": "PASS",
+      "metrics": {
+        "techStackCount": 8,
+        "tagsCount": 3,
+        "sampleTech": [
+          "Python",
+          "TensorFlow",
+          "Keras",
+          "OpenCV",
+          "CNN"
+        ],
+        "sampleTags": [
+          "CSE-Engineering",
+          "Artificial-Intelligence",
+          "Academic-Project"
+        ]
+      },
+      "details": "Discovered 8 tech entities and 3 tags"
+    },
+    {
+      "category": "Adversarial_OutOfScope_Rejection",
+      "testId": "CSE-MED-NEG",
+      "projectTitle": "Brain Tumor Detection Using Convolutional Neural Networks",
+      "description": "Adversarial Probe: \"How does the submarine sonar system detect brain t...\"",
+      "status": "PASS",
+      "metrics": {
+        "isOutOfScope": true,
+        "missingTerm": "submarine sonar",
+        "abstained": true,
+        "hallucinationRate": 0,
+        "faithfulnessScore": 100,
+        "latencyMs": 3
+      },
+      "details": "Clean Refusal: The project report for \"Brain Tumor Detection Using Convolutional Neural Networks\" does not explicit..."
+    }
+  ]
+}

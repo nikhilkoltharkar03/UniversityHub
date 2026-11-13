@@ -31,5 +31,10 @@ Thumbs.db
 
 # Agent Scratch Files & Temporary Benchmarks
 .agent/scratch/
+.agents/
 *.tmp
+
+# Cached Capstone Binary Downloads (re-downloaded by ingest_real_capstones.js)
+server/data/capstones/*.pdf
+server/data/capstones/*.zip
 
